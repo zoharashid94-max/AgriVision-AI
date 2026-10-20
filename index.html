@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="AgriVision AI is an educational plant leaf image analysis project for learning about plant health."
+    >
+
+    <meta name="theme-color" content="#123d2a">
+
+    <title>AgriVision AI | Smart Agriculture</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/" class="logo" aria-label="AgriVision AI home">
+            <span class="logo-icon">🌿</span>
+            <span>AgriVision <span class="logo-ai">AI</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+        </div>
+
+        <a href="#detect" class="nav-button">
+            Detect Disease <span aria-hidden="true">↗</span>
+        </a>
+    </nav>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    AI-POWERED SMART AGRICULTURE
+                </div>
+
+                <h1>
+                    Healthier Crops.<br>
+                    <span>Smarter Farming.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Explore AI-assisted plant leaf analysis and learn about
+                    plant health through an educational computer vision project.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#detect" class="primary-button">
+                        Analyze a Leaf <span aria-hidden="true">→</span>
+                    </a>
+
+                    <a href="#how-it-works" class="secondary-button">
+                        Explore How It Works <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    <span>✓</span> Simple to use
+                    <span>✓</span> AI-assisted analysis
+                    <span>✓</span> Learning for everyone
+                </div>
+
+                <div class="hero-trust">
+                    <span class="trust-icon">✳</span>
+                    <p>
+                        Computer vision for a more informed approach
+                        to plant health.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="hero-visual">
+                <div class="image-frame">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=1000&q=85"
+                        alt="Green agricultural plants growing in a field"
+                    >
+
+                    <div class="image-overlay"></div>
+
+                    <div class="floating-card">
+                        <span class="leaf-icon">🌱</span>
+
+                        <div>
+                            <strong>Smarter Crop Care</strong>
+                            <p>Knowledge for healthier plants</p>
+                        </div>
+
+                        <span class="floating-arrow">↗</span>
+                    </div>
+
+                    <div class="image-label">
+                        <span class="label-dot"></span>
+                        GROW BETTER, GROW SMARTER
+                    </div>
+
+                    <div class="image-caption">
+                        <span>AGRICULTURE</span>
+                        <strong>Growing a greener future</strong>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Highlights -->
+        <section class="stats" id="about">
+
+            <div class="stat-item">
+                <span class="stat-icon">🌾</span>
+                <div>
+                    <strong>Smart</strong>
+                    <p>Agricultural support</p>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-icon">🔬</span>
+                <div>
+                    <strong>AI-Powered</strong>
+                    <p>Image analysis</p>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-icon">📊</span>
+                <div>
+                    <strong>Data-Informed</strong>
+                    <p>Model evaluation</p>
+                </div>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-icon">🌍</span>
+                <div>
+                    <strong>Sustainability</strong>
+                    <p>Farming awareness</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Image Upload and Prediction -->
+        <section class="detect-section" id="detect">
+
+            <div class="section-heading">
+                <span class="section-tag">
+                    <span class="tag-line"></span>
+                    YOUR PLANT, YOUR INSIGHT
+                </span>
+
+                <h2>Let's Check Your <span>Plant.</span></h2>
+
+                <p>
+                    Upload a clear plant leaf image to explore the model's
+                    experimental predictions.
+                </p>
+            </div>
+
+            <div class="upload-card">
+
+                <div class="upload-card-top">
+                    <span class="upload-badge">
+                        <span class="status-dot"></span>
+                        PLANT ANALYSIS
+                    </span>
+                    <span class="upload-step">01 / UPLOAD</span>
+                </div>
+
+                <div class="upload-icon-wrap">
+                    <div class="upload-icon">🍃</div>
+                    <span class="upload-sparkle sparkle-one">✳</span>
+                    <span class="upload-sparkle sparkle-two">✦</span>
+                </div>
+
+                <h3>Upload a Plant Leaf Image</h3>
+
+                <p class="upload-intro">
+                    Choose a clear photo of a single leaf for the best
+                    possible image analysis.
+                </p>
+
+                <!-- Upload Form: existing Flask endpoint and field preserved -->
+                <form
+                    id="upload-form"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+
+                    <label class="upload-button" for="leaf-image">
+                        <span aria-hidden="true">＋</span>
+                        Choose Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="leaf-image"
+                        name="leaf_image"
+                        accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                        required
+                    >
+
+                    <p
+                        id="file-name"
+                        class="file-name"
+                        aria-live="polite"
+                    >
+                        No image selected yet
+                    </p>
+
+                    <p
+                        id="client-error"
+                        class="upload-error"
+                        role="alert"
+                        hidden
+                    ></p>
+
+                    <button
+                        type="submit"
+                        id="analyze-button"
+                        class="primary-button analyze-button"
+                    >
+                        Analyze Leaf <span aria-hidden="true">→</span>
+                    </button>
+
+                </form>
+
+                <div class="upload-requirements">
+                    <span>↥</span>
+                    JPG, JPEG, PNG or WEBP
+                    <span class="requirement-divider">·</span>
+                    Maximum 5 MB
+                </div>
+
+                <!-- Server-side Error -->
+                {% if error %}
+                    <div
+                        class="upload-error"
+                        id="upload-error"
+                        role="alert"
+                        tabindex="-1"
+                    >
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                <!-- Uploaded Image and Results -->
+                {% if uploaded_image %}
+
+                    <div
+                        class="upload-result"
+                        id="analysis-result"
+                        tabindex="-1"
+                    >
+
+                        <div class="result-heading">
+                            <span class="result-check">✓</span>
+
+                            <div>
+                                <h3>Image uploaded successfully!</h3>
+
+                                <p>
+                                    Your image has been processed by the application.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="preview-wrap">
+                            <span class="preview-label">YOUR UPLOADED IMAGE</span>
+
+                            <img
+                                class="preview-image"
+                                src="{{ url_for('static', filename='uploads/' + uploaded_image) }}"
+                                alt="Uploaded plant leaf"
+                            >
+                        </div>
+
+                        {% if predictions %}
+
+                            <div class="prediction-section">
+
+                                <span class="section-tag">
+                                    <span class="tag-line"></span>
+                                    MODEL ANALYSIS
+                                </span>
+
+                                <h3 class="prediction-title">
+                                    AI Prediction Results
+                                </h3>
+
+                                <p class="prediction-description">
+                                    Explore the model's highest-scoring
+                                    categories for your uploaded image.
+                                </p>
+
+                                <!-- Uncertainty Warning -->
+                                {% if prediction_warning %}
+                                    <div
+                                        class="uncertainty-warning"
+                                        role="alert"
+                                    >
+                                        <span class="warning-icon">⚠️</span>
+
+                                        <div>
+                                            <strong>Prediction Needs Verification</strong>
+
+                                            <p>
+                                                {{ prediction_warning }}
+                                                The model may be confusing similar
+                                                categories. Try a clear image of a
+                                                single leaf and independently verify
+                                                the plant and its condition.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% for result in predictions %}
+
+                                    <article
+                                        class="prediction-card {% if loop.first %}top-prediction{% endif %}"
+                                    >
+
+                                        <div class="prediction-card-top">
+
+                                            <span class="prediction-rank">
+                                                {% if loop.first %}
+                                                    <span aria-hidden="true">✳</span>
+                                                    Top prediction
+                                                {% else %}
+                                                    Option {{ loop.index }}
+                                                {% endif %}
+                                            </span>
+
+                                            <span class="score-value">
+                                                {{ result.confidence }}%
+                                            </span>
+
+                                        </div>
+
+                                        <h4>{{ result.plant }}</h4>
+
+                                        <p class="condition-label">
+                                            Predicted condition
+                                        </p>
+
+                                        <p class="condition-name">
+                                            {{ result.condition }}
+                                        </p>
+
+                                        <div
+                                            class="confidence-track"
+                                            role="img"
+                                            aria-label="Model score {{ result.confidence }} percent"
+                                        >
+                                            <span
+                                                style="width: {{ [[result.confidence|float, 0]|max, 100]|min }}%;"
+                                            ></span>
+                                        </div>
+
+                                        <p class="score-caption">
+                                            Model score: {{ result.confidence }}%
+                                        </p>
+
+                                    </article>
+
+                                {% endfor %}
+
+                                <div class="prediction-notice">
+
+                                    <span class="notice-icon">ⓘ</span>
+
+                                    <div>
+                                        <strong>Educational result only</strong>
+
+                                        <p>
+                                            This is an experimental AI prediction,
+                                            not a confirmed plant disease diagnosis.
+                                            Model scores do not guarantee correctness.
+                                            Results may be unreliable for images,
+                                            plant varieties or conditions outside
+                                            the model's training data.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="prediction-notice">
+                                <span class="notice-icon">ⓘ</span>
+                                <div>
+                                    <strong>No prediction available</strong>
+
+                                    <p>
+                                        The model did not return a result.
+                                        Please try another clear leaf image.
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+                <div class="upload-footer-note">
+                    <span aria-hidden="true">ⓘ</span>
+                    <p>
+                        For educational use only. Do not rely on model
+                        predictions alone to decide how to treat a crop.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-section" id="how-it-works">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    <span class="tag-line"></span>
+                    SIMPLE BY DESIGN
+                </span>
+
+                <h2>How AgriVision <span>Works.</span></h2>
+
+                <p>
+                    Three simple steps to explore AI-assisted plant
+                    image classification.
+                </p>
+
+            </div>
+
+            <div class="steps">
+
+                <article class="step-card">
+                    <div class="step-card-top">
+                        <span class="step-number">01</span>
+                        <span class="step-icon">📷</span>
+                    </div>
+
+                    <span class="step-label">STEP ONE</span>
+                    <h3>Upload</h3>
+
+                    <p>
+                        Select a clear photograph of a plant leaf
+                        in a supported image format.
+                    </p>
+
+                    <span class="step-decoration">↗</span>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-card-top">
+                        <span class="step-number">02</span>
+                        <span class="step-icon">🧠</span>
+                    </div>
+
+                    <span class="step-label">STEP TWO</span>
+                    <h3>Analyze</h3>
+
+                    <p>
+                        The image classification model evaluates the
+                        image against its supported categories.
+                    </p>
+
+                    <span class="step-decoration">↗</span>
+                </article>
+
+                <article class="step-card">
+                    <div class="step-card-top">
+                        <span class="step-number">03</span>
+                        <span class="step-icon">🌿</span>
+                    </div>
+
+                    <span class="step-label">STEP THREE</span>
+                    <h3>Learn</h3>
+
+                    <p>
+                        Explore the predicted categories while
+                        remembering that results need independent verification.
+                    </p>
+
+                    <span class="step-decoration">↗</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+
+            <div class="footer-inner">
+
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">🌿</span>
+                        <span>AgriVision <span class="logo-ai">AI</span></span>
+                    </a>
+
+                    <p>
+                        Exploring plant health through artificial intelligence
+                        and computer vision.
+                    </p>
+                </div>
+
+                <div class="footer-meta">
+                    <span class="footer-pill">
+                        <span class="status-dot"></span>
+                        EDUCATIONAL AI PROJECT
+                    </span>
+
+                    <p>Built with Python, Flask and Computer Vision</p>
+                    <span class="footer-copyright">
+                        Experimental predictions · Results require verification
+                    </span>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- Existing upload validation and result scrolling preserved -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const imageInput = document.getElementById("leaf-image");
+            const fileName = document.getElementById("file-name");
+            const uploadForm = document.getElementById("upload-form");
+            const analyzeButton = document.getElementById("analyze-button");
+            const clientError = document.getElementById("client-error");
+
+            const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+            const allowedExtensions = [
+                "jpg",
+                "jpeg",
+                "png",
+                "webp"
+            ];
+
+            imageInput.addEventListener("change", function () {
+
+                clientError.textContent = "";
+                clientError.hidden = true;
+
+                if (!this.files || this.files.length === 0) {
+                    fileName.textContent = "No image selected yet";
+                    return;
+                }
+
+                const file = this.files[0];
+
+                fileName.textContent = "Selected: " + file.name;
+
+                const extension = file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+                if (!allowedExtensions.includes(extension)) {
+                    clientError.textContent =
+                        "Unsupported file format. Please choose JPG, JPEG, PNG or WEBP.";
+
+                    clientError.hidden = false;
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    clientError.textContent =
+                        "The selected image exceeds 5 MB. Please choose a smaller image.";
+
+                    clientError.hidden = false;
+                }
+            });
+
+            uploadForm.addEventListener("submit", function (event) {
+
+                clientError.textContent = "";
+                clientError.hidden = true;
+
+                if (!imageInput.files || imageInput.files.length === 0) {
+                    event.preventDefault();
+
+                    clientError.textContent =
+                        "Please choose a plant leaf image first.";
+
+                    clientError.hidden = false;
+                    return;
+                }
+
+                const file = imageInput.files[0];
+
+                const extension = file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+                if (!allowedExtensions.includes(extension)) {
+                    event.preventDefault();
+
+                    clientError.textContent =
+                        "Unsupported file format. Please choose JPG, JPEG, PNG or WEBP.";
+
+                    clientError.hidden = false;
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    event.preventDefault();
+
+                    clientError.textContent =
+                        "The selected image exceeds 5 MB. Please choose a smaller image.";
+
+                    clientError.hidden = false;
+                    return;
+                }
+
+                analyzeButton.disabled = true;
+                analyzeButton.innerHTML = 'Analyzing image <span class="loading-spinner" aria-hidden="true"></span>';
+            });
+
+            const analysisResult = document.getElementById("analysis-result");
+            const serverError = document.getElementById("upload-error");
+
+            const target = analysisResult || serverError;
+
+            if (target) {
+                requestAnimationFrame(function () {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
